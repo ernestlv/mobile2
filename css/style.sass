@@ -1,0 +1,2207 @@
+@import "compass/css3"
+@import "normalize.css"
+
+// defaults
+$DEFAULT_PADDING: 14px 
+$NARROW_PADDING: 10px 14px
+$DEFAULT_MARGIN: 14px
+$HALF_PADDING: $DEFAULT_PADDING / 2
+$HALF_MARGIN: $DEFAULT_MARGIN / 2
+
+// global bg colors
+$BODY_COLOR: #ECE9DA
+$HEADER_COLOR: #EFEFEF
+$CONTENT_LEAD: #F3F0E7
+$CONTENT_COLOR: #EBE9DA
+$BRIGHT_GREEN: #97CE34
+$FOOTER_COLOR: #2A2A2A
+$ALT_BG_COLOR: #F5F5F5
+$GREY_TINT: #E5E5E5
+$FOREST_GREEN: #4E8B2D
+
+// images
+$LOGO_PATH: '../imgs/CCM_logo.png'
+$SPRITE: '../imgs/CCM_ui.png'
+
+// link colors
+$LINK_COLOR_DEFAULT: #00649D
+$LINK_COLOR_ON_DARK: #FFFFFF
+$LINK_COLOR_CONTRAST: #B3F182
+
+// font style and color
+$FONT_FAMILY: 'arial', sans-serif
+$TEXT_COLOR_DEFAULT: #323232
+$TEXT_COLOR_TINT: #898989
+
+// lines
+$DOTTED_LINE: 1px dotted #CCC
+$SOLID_LINE: 1px solid #E5E5E5
+$SOLID_LINE_BEIGE: 1px solid #EAE8D9
+
+// font sizes
+$FONT_X_LARGE: 2em
+$FONT_LARGE: 1.75em
+$FONT_MED_LG: 1.65em
+$FONT_MED_MED: 1.50em
+$FONT_MED: 1.145em
+$FONT_MED_SM: 1em
+$FONT_MED_SM_2: .95em
+$FONT_SM: .85em
+$FONT_SM_2: .80em
+$FONT_X_SM: .75em
+$FONT_XX_SM: .65em
+
+// image border colors
+$LIME: #92D339
+$CHERRY: #CB195D
+
+// global elements
+body
+  font-family: $FONT_FAMILY
+
+  &.desktop
+    width: auto
+
+  &.landscape
+    width: 480px
+
+  &.portrait
+    width: 320px
+
+  a
+    text-decoration: none
+    color: $LINK_COLOR_DEFAULT
+
+  a:hover
+    text-decoration: underline
+
+header
+  background-color: $HEADER_COLOR
+
+  h1
+    margin: 0
+    display: inline-block
+
+    a
+      width: 138px
+      height: 33px
+      display: block
+      background-image: url($LOGO_PATH)
+      @extend .hide-text
+
+h2
+  text-transform: uppercase
+  color: #33582D
+
+section
+
+  h2
+    color: black
+    font-size: $FONT_MED_MED
+
+h2 + section
+  margin-top: 7px
+
+nav
+  +background-image(linear-gradient(bottom, rgb(12,48,20) 47%, rgb(36,68,44) 47%))
+
+  ul
+    margin: 0
+    padding: 0
+    border-top: 4px solid $BRIGHT_GREEN
+
+    li
+      display: inline-block
+      width: 25%
+      margin-right: -4px
+
+      a
+        width: 100%
+        text-align: center
+        padding: 5px 0
+        color: $LINK_COLOR_ON_DARK
+        display: inline-block
+        text-decoration: none
+        text-transform: uppercase
+        font-size: $FONT_SM
+        font-weight: bold
+
+        &:hover, &.active
+          background-color: $FOREST_GREEN
+          text-decoration: none
+
+.page 
+  background-color: $CONTENT_COLOR
+
+div[role=main]
+  padding: 14px 0 0
+
+  >h2 
+    margin: 0 14px 0
+
+  >p 
+    margin: 0 14px 7px
+    line-height: 1.4em
+
+  >.date-picker
+    margin: 0 14px -7px
+
+    .button
+      height: 66px
+      top: 1px
+
+// general module styles
+
+section
+  margin: $DEFAULT_MARGIN
+  background: #FFF
+
+  &:first-child
+    margin-top: 7px
+
+  &:last-child
+    margin-bottom: 14px
+
+  img
+    margin-bottom: 0.25em
+    +box-sizing(border-box)
+    max-width: 424px
+
+  &.wide
+    margin: 0
+
+h3, h5
+  text-transform: uppercase
+
+h4.call
+  font-size: $FONT_SM
+  color: $CHERRY
+  margin-bottom: 0
+
+p > span
+  display: block
+  line-height: 1.5em
+
+ul, dl
+  list-style-type: none
+  margin: 0 
+  padding: 0
+
+  li, dt 
+    line-height: 1.5em
+
+  &.list     
+
+    li 
+      font-size: $FONT_SM       // text is smaller than link
+      padding-left: 1em
+      background: url($SPRITE) -7px -568px no-repeat
+      margin: 0.40em 0
+
+      a 
+        font-size: $FONT_MED    // link is (always) bigger than text
+
+  &.grid
+
+    li 
+      display: inline-block
+      margin-bottom: $DEFAULT_MARGIN
+      width: 120px
+      line-height: 0
+
+      &:nth-child(2n+1)
+        margin-right: 14px
+
+      img 
+        margin-bottom: 0
+
+      cite
+        display: block
+        margin-top: .25em
+        font-size: $FONT_X_SM
+        line-height: 1.5em
+        text-transform: none
+
+        a 
+          display: block
+
+.hd 
+  padding: 11px 0 4px
+  border-bottom: $SOLID_LINE_BEIGE
+
+  >*
+    padding: 0 14px
+    margin-bottom: .25em
+
+  &.plain
+    position: relative
+    //padding: 14px 0 4px
+    border-bottom: none
+
+  &.inline
+    border-bottom: none
+
+    p 
+      font-size: $FONT_SM
+      margin-bottom: 0
+
+    select
+      margin: 0
+      width: 74%
+      float: right
+      background: url($SPRITE) no-repeat right -843px
+
+    div 
+      margin-top: .5em
+
+      select, p 
+        display: inline-block
+        margin-bottom: 0
+        padding-top: .5em
+
+  sup
+    color: #BBB
+    font-size: $FONT_X_SM
+    display: inline-block
+    padding: 2px
+
+.bd
+  padding: $DEFAULT_PADDING
+  overflow: hidden              // to avoid collapsing margin bug
+
+  p
+    //font-size: $FONT_MED_SM just testing
+    font-size: $FONT_SM
+
+  &.alt
+
+    p
+      font-size: $FONT_MED_SM
+
+  .panel
+    border-top: $SOLID_LINE_BEIGE
+    border-bottom: $SOLID_LINE_BEIGE
+    padding: 14px 0 11px    
+    margin: -15px 0 14px
+
+    &:last-child
+      border-bottom: none
+      margin-bottom: 0
+      padding-bottom: 0
+
+    h5 
+      margin-bottom: 7px
+
+    p 
+      margin-bottom: 0
+
+    p + ul 
+      margin-top: 7px
+
+    span 
+      display: table
+      margin-bottom: 7px
+
+      h4 
+        display: table-cell
+        vertical-align: middle
+
+      img 
+        float: left
+        margin-right: $DEFAULT_MARGIN
+
+.ft 
+  padding: 10px 14px
+
+  &.flush
+    padding-top: 0
+    margin-top: -7px 
+
+  &:after
+    @extend .clear
+
+ol
+
+  &.list
+    list-style-type: decimal
+    margin-left: 28px
+
+// section.lead: for top of page, no BG
+.section
+
+  &.lead
+    background: #F3F0E7
+    margin: -14px 0 0
+    padding-top: 14px
+    border-bottom: 3px solid #E1DDD1
+
+    h2
+      text-transform: none
+      margin-bottom: 0
+      color: #000
+      font-size: $FONT_MED_LG
+
+    cite
+      text-transform: none
+      font-size: .75em
+
+    .meta
+      margin: 7px 0
+
+      li 
+        text-transform: none
+        font-size: .75em
+        color: $TEXT_COLOR_TINT
+
+// ads
+.ad 
+  padding: 10px 10px 0
+  margin: auto
+  width: 300px
+
+#leaderboard
+  margin-bottom: -2px
+
+#footerboard
+  padding: 0 10px 10px
+
+#sponsor
+  display: table
+  margin-left: auto
+
+  img 
+    margin-bottom: 0
+
+  cite
+    display: table-cell
+    padding-right: 7px
+    vertical-align: middle
+    font-style: normal
+    font-size: $FONT_XX_SM
+    color: $TEXT_COLOR_TINT
+
+#results
+  background-color: #F6F3EC
+  padding: 14px
+  margin-top: -1px
+
+  li 
+    clear: both
+
+  h4
+    text-transform: none
+    margin-bottom: .25em
+
+  p 
+    font-size: $FONT_X_SM
+
+  img
+    float: right
+    margin: 0 0 0 $DEFAULT_MARGIN
+
+// form elements
+
+.search-wrap
+  +background-image(moz-linear-gradient(center bottom , #000000, #B8B8B8))
+  position: relative
+  margin-top: $DEFAULT_MARGIN
+  padding: 1px
+
+  &.hidden
+    margin-bottom: -14px
+
+  input[type="search"]
+    background: #FFF
+    border: 1px solid #AAA
+    +box-sizing(border-box)
+    +border-radius(4px)
+    -webkit-appearance: none /* disable iOS5 rounded corners */
+    -webkit-border-radius: 4px /* explicitly set them */
+    box-shadow: 1px 2px 1px #EDEDED inset
+    padding: 16px 0 13px 14px
+    width: 100% 
+    font-size: 0.75em
+    color: $TEXT_COLOR_TINT
+
+section .search-wrap
+  margin: 7px 14px 0
+  padding-bottom: $DEFAULT_PADDING
+
+  input[type="search"]
+    padding-right: 100px
+
+// jump links
+.jump
+  margin: 0
+  font-size: $FONT_X_SM
+
+.hd .jump
+  position: absolute
+  right: 0
+  top: $DEFAULT_MARGIN
+
+.ft .jump
+  float: right
+
+// specific module styles
+
+
+// popular module
+.ordered 
+
+  ol
+    margin: 0px
+    padding: 0px
+    border-bottom: $DOTTED_LINE
+
+    li
+      border-top: $SOLID_LINE
+      display: table
+      +box-sizing(border-box)
+      width: 100%
+
+      >span 
+        clear: left
+        float: left
+        font-size: 1.50em
+        font-weight: bold
+        margin-right: 10px
+
+      p, div
+        margin: 0
+        display: table-cell
+        width: 100%
+        vertical-align: middle        
+
+  // green block list
+  &.schedule
+
+    ol 
+
+      li
+
+        span
+          background-color: #96Cf32
+          border-right: 3px solid #3C582F
+          color: #333
+          height: 42px
+          text-align: center
+          width: 30px
+          padding: 17px 11px 0
+
+        p 
+          font-size: .85em
+          padding-right: $DEFAULT_PADDING
+          font-weight: bold
+
+  // red stripe block list
+  &.packages
+
+    ol
+      background-color: #F3F0E7
+
+      li 
+
+        >span
+          font-size: 1.75em
+          font-weight: normal
+          color: #8C1B0B
+          margin-right: 4px
+          padding: 7px 0 0 21px
+
+        &:first-child > span
+          font-weight: bold
+          color: #000
+
+        div
+          width: 225px
+          background-color: #FFF
+          border-left: 4px solid #F5977E
+          padding: 10px 14px
+
+        &:first-child div
+          border-left: 4px solid #F8523C
+
+        h4 
+          text-transform: none
+
+// guide module
+.guide
+  border-top: $SOLID_LINE_BEIGE
+  border-bottom: $DOTTED_LINE
+
+  dl
+    width: 100%
+    margin: 0
+
+    dt, dd, 
+      display: inline-block
+      vertical-align: top
+
+    dt
+      width: 53px
+      font-size: .65em
+      text-transform: uppercase
+      font-weight: bold
+      border-right: 4px solid $BRIGHT_GREEN
+      padding: $NARROW_PADDING
+      line-height: 1.4em
+
+      span
+        font-size: 1.5em
+
+    dd 
+      width: 64%
+      padding: 10px
+      border-left: 4px solid $BRIGHT_GREEN
+      margin-left: -8px
+
+      cite
+        color: $TEXT_COLOR_TINT
+        font-size: .85em
+        display: block
+        font-style: normal
+
+      span
+        display: block 
+
+      >h4
+        font-weight: bold
+        text-transform: inherit
+        margin-bottom: .15em
+
+    dd >*  
+      &:last-child
+        margin-bottom: 0
+
+  dl:nth-child(even)
+    background-color: $ALT_BG_COLOR
+    border-top: $SOLID_LINE
+    border-bottom: $SOLID_LINE
+
+    &:last-child
+      border-bottom: 0
+
+  h5
+    margin: 1em 0 0.5em
+
+  .list li
+    margin-bottom: .4em
+    line-height: 1.25em
+
+    a 
+      font-size: $FONT_MED_SM_2
+
+  p 
+    font-size: $FONT_SM_2
+    color: #686868
+    line-height: 1.45em
+    margin-bottom: .15em
+
+    &.expander
+      margin-top: 1em
+
+.guide + .boot
+  margin-top: -1px
+
+// action box module
+.action-box
+
+  p
+    font-weight: bold
+    display: inline-block
+    font-size: .75em
+    width: 135px
+    margin: 0
+
+  button
+    float: right
+    position: relative
+    top: 5px
+
+
+// featured lead module
+.featured
+  padding: $DEFAULT_PADDING
+  font-size: .85em  
+
+  div
+    border-bottom: $SOLID_LINE
+    margin-bottom: $DEFAULT_MARGIN
+
+    &:first-child
+      font-size: 1.15em
+
+      h4
+        width: 100px
+
+    &:last-child
+      border-bottom: 0
+      margin-bottom: 0
+
+      p
+        margin-bottom: 0
+
+  h4
+    padding-top: $DEFAULT_MARGIN
+
+  img
+    float: right
+    margin: 0 0 7px 7px
+
+  p 
+    clear: both
+    margin-bottom: .75em
+
+
+// recipes-specific
+.recipes
+
+  .meta
+    margin-bottom: 14px
+
+    ul
+      margin-bottom: 7px
+
+    .rating-wrap
+      margin-bottom: $DEFAULT_MARGIN
+
+      h4
+        float: left
+        margin: 0 7px 4px 0
+        text-transform: none
+
+      span, a
+        float: left
+        font-size: $FONT_SM
+
+      span
+        margin-top: 2px
+        width: 100px
+
+      p 
+        clear: left
+        margin-bottom: 0
+
+
+  .details
+  
+    img
+      padding: $DEFAULT_PADDING
+      background-color: #FFF
+
+    dl
+      font-size: $FONT_SM
+      color: $TEXT_COLOR_TINT
+      clear: both
+
+      &:first-child
+        border-bottom: $SOLID_LINE_BEIGE
+        margin-bottom: 7px
+
+      &:first-child, &:last-child
+        padding-bottom: 7px
+
+      dt
+        float: left
+        padding-left: 14px
+
+        &.time
+          background: url($SPRITE) 0 -107px no-repeat
+
+        &.yield
+          background: url($SPRITE) 0 -166px no-repeat
+
+        &.level 
+          background: url($SPRITE) 0 -136px no-repeat
+
+      dd
+        padding-top: 0
+        text-align: right
+        padding: 3px 0 3px 14px
+
+      dt:first-of-type, 
+      dd:first-of-type
+        font-weight: bold
+        text-transform: uppercase
+        font-size: $FONT_MED
+        color: $TEXT_COLOR_DEFAULT
+
+      dd:first-of-type
+        text-transform: none
+
+
+  .snippets
+    padding: $DEFAULT_PADDING
+
+    &.wrap 
+      border-top: $DOTTED_LINE
+      border-bottom: $DOTTED_LINE
+      padding-bottom: 0
+
+    div, li
+      border-bottom: $SOLID_LINE
+      margin-bottom: $DEFAULT_MARGIN
+      line-height: 1em
+
+      &:after
+        @extend .clear
+
+      &:last-child
+        border-bottom: 0
+        margin-bottom: 0
+
+        p
+          margin-bottom: 0
+
+    figure
+      float: right
+      margin: 0 0 14px 7px
+      width: 96px
+
+      a
+        font-size: $FONT_X_SM
+
+    h4
+      text-transform: none
+
+    img 
+      margin-bottom: 0  
+
+    .rating
+      margin-top: 7px
+
+    cite 
+      display: block
+      font-style: normal
+      font-size: $FONT_X_SM
+      margin-bottom: 7px
+
+    span
+      display: block
+      padding-left: $DEFAULT_PADDING
+      font-size: $FONT_X_SM 
+      color: $TEXT_COLOR_TINT
+
+      &.duration
+        background: url($SPRITE) 0 -110px no-repeat
+
+      &[rel="tag"]
+        background: url($SPRITE) 0 -140px no-repeat
+
+
+// nutrition table
+.nutrition
+  width: 100%
+  font-size: $FONT_SM
+  margin: -7px 0
+
+  thead td
+    border-bottom: $SOLID_LINE
+    text-transform: uppercase
+    font-weight: bold
+    font-size: $FONT_SM
+    color: $TEXT_COLOR_TINT
+
+  tr 
+    border-bottom: $SOLID_LINE
+
+    &:last-child
+      border: none
+
+  th
+    text-align: left
+    font-weight: bold
+
+  td, thead td
+    text-align: right
+
+  th, td 
+    padding: 4px 0
+
+
+
+
+// list hat
+.list-hat
+  padding: 0
+  margin: 7px 0 -7px
+
+  h3, p 
+    margin-bottom: 0 
+
+
+// index module
+.index
+  padding: $DEFAULT_PADDING
+
+  div
+    border-bottom: $SOLID_LINE
+    margin-bottom: $DEFAULT_MARGIN
+    padding-bottom: 7px
+    position: relative
+
+    &:last-child
+      border-bottom: 0
+      margin-bottom: 7px
+      padding-bottom: 0  
+
+    .jump
+      position: absolute
+      top: 0
+      right: 0
+      font-size: $FONT_X_SM
+
+    &.combo
+
+      img
+        float: left
+        margin: 0 14px 14px 0
+
+      h4
+        padding-top: 10px
+
+      ul 
+        clear: both
+
+  .expander
+    font-size: $FONT_X_SM
+
+    cite
+      font-size: $FONT_MED_SM
+      bottom: 0
+
+// leads
+.lead 
+
+  >*
+    padding: 0 14px
+
+  p
+    font-size: $FONT_SM
+    line-height: 1.7em
+
+  h3 
+    font-size: $FONT_MED_MED
+    font-weight: lighter
+ 
+  cite
+    color: $TEXT_COLOR_TINT
+    font-size: $FONT_XX_SM
+    text-transform: uppercase
+    display: block
+    margin: -10px 0 7px
+    font-style: normal  
+
+.static-lead-single
+  img 
+    width: 100%
+
+.prev-next
+  margin: 0
+  
+  a, button 
+    display: inline-block
+
+    &:last-child
+      float: right
+
+.lead + .date-picker 
+  margin-top: -21px
+
+// banner module
+.banner  
+  position: relative
+  overflow: hidden
+  height: 65px
+  padding: 0
+  margin-bottom: 14px
+
+  h2
+    font-size: $FONT_MED_SM
+    padding: 17px 0 0 10px
+    font-weight: normal
+    line-height: 1em
+    width: 145px
+
+    &.sm
+      padding-top: 12px
+      font-size: .75em 
+      width: 130px
+      line-height: 1.25em
+
+    &.med 
+      padding-top: 18px
+      font-size: .80em 
+      width: 130px
+      line-height: 1.25em
+
+  img 
+    position: absolute
+    height: 104px
+    right: 0
+    top: 0
+
+
+  // banner themes
+  &.bluefish
+    background-color: #00333b
+    border-left: 4px solid #21585f
+    h2
+      color: #4ad9d9
+  &.mustard
+    background-color: #392e01
+    border-left: 4px solid #776012
+    h2
+      color: #ebe654
+  &.herb
+    background-color: #1b2b17
+    border-left: 4px solid #395931
+    h2
+      color: #95cf32
+  &.berry
+    background-color: #360F22
+    border-left: 4px solid #71012f
+    h2
+      color: #fc7c95
+  &.spice
+    background-color: #400e05
+    border-left: 4px solid #91200c
+    h2
+      color: #f7523a
+
+
+// date picker
+.date-picker
+
+  .bd 
+    padding: 0 0 4px 
+    position: relative
+    margin: 7px 0 0
+    overflow-x: hidden    
+
+    #crsl-wrap
+      height: 67px
+      border-top: $SOLID_LINE_BEIGE
+      border-bottom: $SOLID_LINE
+      +border-radius(3px)
+      background-color: #FFF
+
+  button
+    height: 67px
+    padding: 0 7px
+    position: absolute
+    font-size: 0
+    z-index: 2
+    top: 1px
+
+    &.prev
+      +border-left-radius(2px)
+      +border-right-radius(0)
+      +box-shadow(1px 0 0 #8CBD2D inset)
+      left: 0
+
+      // left arrow
+      em 
+        width: 0
+        height: 0
+        border-bottom: 4px solid transparent
+        border-right: 4px solid #FFF
+        border-top: 4px solid transparent
+
+    &.next
+      +border-right-radius(2px)
+      +border-left-radius(0)
+      +box-shadow(-1px 0 0 #8CBD2D inset)
+      right: 0
+
+      // right arrow
+      em 
+        width: 0
+        height: 0
+        border-bottom: 4px solid transparent
+        border-left: 4px solid #FFF
+        border-top: 4px solid transparent
+
+  h3, p
+    margin-bottom: 0
+
+  p 
+    font-weight: bold
+
+  ul 
+    background-color: #FFF
+    display: inline-block
+    height: 67px
+    width: 4000px
+
+    li 
+      line-height: 1em
+      float: left
+      width: 67px
+      height: 67px
+      display: block 
+      text-align: center
+      border-right: $SOLID_LINE_BEIGE
+      border-left: $SOLID_LINE_BEIGE
+      margin-right: -1px
+      position: relative
+
+      &.selected
+        background-color: #F5F5F5      
+        color: #93230D
+
+        mark
+          width: 100%
+          height: 4px
+          display: block
+          background-color: #ACA593
+          position: absolute
+          bottom: 0
+
+          em 
+            border-left: 4px solid transparent
+            border-right: 4px solid transparent
+            border-top: 4px solid #ACA593
+            left: 50%
+            top: 4px
+
+      //day
+      h4
+        padding-top: 18px
+        margin-bottom: 0
+
+      //date
+      span
+        font-size: $FONT_X_SM
+        font-weight: bold
+
+      //today
+      em 
+        color: $FOREST_GREEN
+        font-size: $FONT_XX_SM
+        text-transform: uppercase
+        font-style: normal
+        position: absolute
+        top: 2px 
+        left: 17px
+        font-weight: bold
+
+.date-picker + .guide
+  border-top: 0
+
+.bd + .date-picker
+  margin-top: -21px
+
+
+//selectable list
+.selectable
+
+  >li, >dt
+    border-bottom: $DOTTED_LINE
+
+    &:last-child
+      border-bottom: 0
+
+    >a, >p 
+      display: block 
+      padding: 10px 14px 7px
+      font-weight: bold
+      margin: 0         // for p tag variation
+      cursor: pointer   // ""
+      color: #00649D    // ""
+
+      &:hover 
+        text-decoration: none
+
+  >dt
+    border-bottom: $SOLID_LINE_BEIGE  
+
+    a, p
+      position: relative
+
+      em
+        position: absolute
+        right: 14px
+        top: 18px
+        width: 0
+        height: 0
+        border-left: 5px solid transparent
+        border-right: 5px solid transparent
+        border-top: 5px solid #045F94
+
+      &.current
+
+        em 
+          border-left: 5px solid transparent
+          border-right: 5px solid transparent
+          border-bottom: 5px solid #045F94
+          border-top: none
+
+// ratings & reviews
+.ratings
+  margin-top: -10px
+  padding: 0 0 14px
+
+  .pod
+    position: relative
+    border: $SOLID_LINE
+    margin-bottom: 88px
+
+    // speech bubble arrow
+    &:after
+      content: ""
+      position: absolute
+      bottom: -16px
+      left: 35px
+      border-width: 16px 0 0 16px
+      border-style: solid
+      border-color: #FAF6F3 transparent
+      display: block
+      width: 0
+
+    // speech bubble arrow border
+    em 
+      border-width: 16px 0 0 17px
+      border-style: solid
+      border-color: #E5E5E5 transparent
+      width: 0
+      position: absolute
+      bottom: -17px
+      left: 35px
+
+
+    p 
+      padding: 10px 14px 0
+      font-size: $FONT_SM
+
+    .ft
+      background-color: #FAF6F3
+      padding: 7px 
+
+    .tag
+      position: absolute
+      left: 68px
+      bottom: -76px
+
+      ul 
+        width: 130px
+        position: relative
+        top: -5px
+        display: inline-block
+        font-size: $FONT_X_SM
+
+        li  
+          overflow: hidden
+          height: 19px
+
+      img 
+        display: inline-block
+        margin-right: 4px
+
+
+//accordion
+.accordion
+
+  dd
+
+    &.active
+    border-bottom: 3px solid #EAE8D9
+
+    .wrap
+      padding: 14px 42px
+      border-bottom: $DOTTED_LINE
+
+      &:last-child
+        border-bottom: none
+
+      &.alt 
+        background: $ALT_BG_COLOR
+
+    h4
+      text-transform: inherit
+
+    h5
+      margin-bottom: .5em
+
+    cite
+      color: $TEXT_COLOR_TINT
+      font-size: $FONT_XX_SM
+      text-transform: uppercase
+      display: block
+      margin: -7px 0 14px
+      font-style: normal 
+
+    li 
+      a 
+        font-size: $FONT_MED_SM
+
+  .selectable
+
+    .expanded
+      border-bottom: $DOTTED_LINE      
+
+  dt 
+    &.current
+      a, p
+        em 
+          border-left: 5px solid transparent
+          border-right: 5px solid transparent
+          border-bottom: 5px solid #045F94
+          border-top: none
+
+.lead + .accordion
+  margin-top: -14px
+
+
+
+// colored border
+img, a img 
+
+  &.lime
+    border-left: 4px solid $LIME
+
+  &.cherry
+    border-left: 4px solid $CHERRY
+
+//anchors & arrows
+a.arrow
+  position: relative
+
+  &.active
+    background-color: $FOREST_GREEN
+    border-left: 4px solid $BRIGHT_GREEN
+    color: #FFF
+
+    cite
+      color: #FFF
+
+  em
+    width: 14px
+    height: 21px
+    display: inline-block
+    background: url($SPRITE) 0 0 no-repeat
+    position: absolute
+
+  &.for em
+    background-position: -80px -195px
+    right: 7px
+
+  &.back 
+    padding: 7px 14px 7px 28px
+
+  &.back em
+    background-position: -14px -195px
+    left: 14px
+
+  &.down em
+    background-position: -52px -195px
+    right: 14px
+
+  &.up em
+    background-position: -30px -195px
+    right: 14px
+
+  &.s // solo adds padding, block-level
+    padding: 14px 14px 14px 28px
+    display: block
+    font-weight: bold
+    font-size: $FONT_SM
+
+    &.back em
+      background-position: -14px -199px
+
+p.expander
+  margin-bottom: 0
+
+a > cite
+  position: relative
+  bottom: 2px
+  font-size: $FONT_X_SM
+  color: $TEXT_COLOR_TINT
+  text-decoration: none
+  font-weight: normal
+  font-style: normal
+  margin-left: 4px
+
+
+a.expander, p.expander a
+
+  &:hover
+    text-decoration: none
+
+  em 
+    cursor: pointer
+    +background-image(linear-gradient(top, rgb(230,249,166) 11%, rgb(180,202,136) 56%))
+    +border-radius(3px)
+    +text-shadow(0 1px 0 #FFF)
+    padding: 0 3px
+    color: #333
+    font-weight: bold
+    font-size: $FONT_SM
+    margin-right: 7px
+    border: 1px solid #A2BD67
+
+// default buttons
+button 
+  color: #FFF
+  cursor: pointer
+  +background-image(linear-gradient(top, rgb(152,206,52) 11%, rgb(132,178,46) 56%))
+  +border-radius(4px)
+  +text-shadow(1px 1px 0 #82A13A)
+  text-transform: uppercase
+  line-height: 1em
+  font-size: $FONT_X_SM
+  padding: 10px 14px
+  border: 0
+  width: auto
+  overflow: visible
+
+  &.small 
+    font-size: .65em
+    padding: 7px 10px
+
+header .buttons,
+section .buttons, 
+footer .buttons
+  position: absolute
+  right: 7px
+  top: 7px
+  display: inline-block
+
+// horizontal buttons
+button.horz
+  margin: 7px
+  +border-radius(0px)
+  +background-image(none)  
+  +text-shadow(none)
+  text-transform: none
+  +background-image(linear-gradient(bottom, rgb(242, 242, 242) 47%, rgb(250, 250, 250) 47%))
+  border: 1px solid #00649D
+  width: 95%
+  padding: 10px 14px
+  color: $LINK_COLOR_DEFAULT
+  font-weight: normal
+  font-size: $FONT_SM
+
+  &.dis
+    border: 1px solid #999894
+    background-color: #FFF
+    color: #606060
+    cursor: default
+
+  em 
+    display: inline-block
+    border-left: 5px solid transparent
+    border-right: 5px solid transparent
+    margin: 2px 14px
+
+  &.prev, &.next
+    width: 47%
+    margin: 0
+
+  &.prev
+    margin-right: 11px
+
+  &.next
+    float: right
+
+// vertical buttons
+button.vert
+  width: 95%
+  margin: 7px
+  padding: 10px 14px 7px
+  +border-radius(3px)
+  border: 1px solid #E7E7E3
+  +background-image(linear-gradient(top, #FFF 20%, #E7E7E7 70%))
+  text-shadow: none
+  text-transform: none
+  font-weight: bold 
+  font-size: $FONT_SM
+  color: $LINK_COLOR_DEFAULT
+
+  &.up em
+    border-bottom: 5px solid #A7A99A
+
+  &.down em
+    border-top: 5px solid #A7A99A
+
+  em 
+    display: inline-block
+    border-left: 5px solid transparent
+    border-right: 5px solid transparent
+    margin: 2px 14px
+
+// steps button
+.button.steps
+  margin: 0 0 4px
+  padding: 9px 14px
+  +border-radius(2px)
+  +box-sizing(border-box)
+  +background-image(linear-gradient(top, #FFF 49%, #F7F7F7 49%))
+  position: relative
+  border: 1px solid #E2E3CE
+  width: 100%
+  color: inherit
+  font-weight: bold 
+  font-size: $FONT_SM
+  text-shadow: none
+  text-transform: none
+  text-align: center
+
+  span
+    font-size: $FONT_SM_2
+    font-weight: bold
+    color: #363636
+
+    i, em 
+      font-style: normal
+      font-weight: normal
+
+    i 
+      font-weight: bold
+
+  button
+    background: url($SPRITE) 0 0 no-repeat
+    position: absolute
+    width: 21px
+    height: 28px
+    top: 4px
+
+    &:first-child
+      background-position: -7px -222px
+      left: 4px
+
+      &.dis
+        background-position: -7px -253px
+
+    &:last-child
+      background-position: -65px -222px
+      right: 4px
+
+      &.dis
+        background-position: -65px -253px
+
+// action button
+button.action
+  margin: 0
+  padding: 9px 10px 7px
+  +border-radius(3px)
+  +background-image(linear-gradient(top, #E8F999 20%, #B4CA89 70%))
+  position: relative
+  border: 1px solid $BRIGHT_GREEN
+  color: inherit
+  font-weight: bold 
+  font-size: $FONT_SM
+  text-shadow: none
+  text-transform: none
+  text-align: left
+
+  em 
+    display: inline-block
+    border-top: 5px solid #3A3A42
+    border-left: 5px solid transparent
+    border-right: 5px solid transparent
+    margin: 0 0 2px 32px
+    +text-shadow(0 1px 0 #FFF)
+
+  &.active
+    +border-radius(3px 3px 0 0)
+    +background-image(none)
+    background-color: #FFF
+    border-color: #CBCBCB
+    border-width: 1px 1px 0
+    padding-bottom: 14px
+
+    em
+      border-top: none
+      border-bottom: 5px solid #3A3A42
+
+// search
+button.search-btn
+  display: none
+  padding: 8px 10px 5px 
+  position: absolute
+  top: -45px
+  right: 0
+
+  &.active
+    opacity: .5
+
+  span
+    width: 17px
+    height: 18px    
+    background: url($SPRITE) -1px 0
+    display: inline-block
+    @extend .hide-text
+
+
+// play button
+.play
+  display: inline-block    
+  position: relative
+
+  .btn
+    display: block
+    +border-radius(50px)
+    background-color: rgba(0, 0, 0, 0.7)
+    margin: auto
+    width: 69px 
+    height: 69px 
+    position: absolute
+    top: 0
+    bottom: 0 
+    left: 0
+    right: 0
+
+    &.l
+      border: 2px solid rgba(100%, 100%, 100%, 0.7)
+
+    em 
+      position: absolute
+      display: block
+      border-bottom: 18px solid transparent
+      border-left: 18px solid #FFF
+      border-top: 18px solid transparent
+      left: 29px
+      top: 18px
+
+  &.thumb
+
+    .btn
+      width: 33px 
+      height: 33px
+      top: auto
+      left: auto
+      bottom: 7px
+      right: 7px
+
+      em 
+        border-bottom: 8px solid transparent
+        border-left: 8px solid #FFF
+        border-top: 8px solid transparent
+        left: 14px
+        top: 9px
+
+  &:hover .btn
+    background-color: rgba(0, 0, 0, 1)
+
+    &.l
+      border: 2px solid rgba(100%, 100%, 100%, 1)
+
+// slide-show
+.slide-show
+  padding: $DEFAULT_PADDING
+
+  p:last-child
+    margin-bottom: 0
+
+  img 
+    margin: 0 0 .65em
+
+  cite
+    display: block 
+    margin: -1.25em 0 .75em
+    background-color: $GREY_TINT
+    padding: $NARROW_PADDING
+    font-size: $FONT_SM
+    font-style: normal
+    line-height: 1.25em
+    max-width: 392px
+
+    &.apple
+      border-left: 4px solid $BRIGHT_GREEN
+
+  img + h3
+    text-transform: none
+
+  // handles "swipeable" gallery componenet
+  #wrapper
+    position: relative
+    z-index: 1
+    overflow: hidden
+    width: auto
+
+    div
+      height: 100%
+      float: left
+
+      ul
+        list-style: none
+        display: block
+        float: left
+        width: 4000px
+        height: 100%
+        padding: 0
+        margin: 0
+        text-align: left
+
+        li
+          display: inline-block
+          vertical-align: top
+          width: 264px
+          height: 100%
+
+// video
+.video
+  padding: $DEFAULT_PADDING
+
+  h3
+    text-transform: none
+    display: inline-block
+
+  h3 + cite
+    margin-left: 7px
+    font-style: normal
+    color: $TEXT_COLOR_TINT
+    font-size: $FONT_SM
+
+
+// article tools
+.article-tools
+  background-color: #F6F4EC
+  margin: -14px 14px 14px
+  padding: $DEFAULT_PADDING
+
+  ul 
+    margin: 10px 0 0
+    width: 100%
+    text-align: center
+
+    li 
+      display: inline-block
+      text-align: center
+      font-size: $FONT_X_SM
+      font-weight: bold
+      margin: 0 3%
+
+      a 
+
+        .icon
+          height: 34px
+          width: 34px
+          background: url($SPRITE)
+
+          &.email
+            background-position: 0 -295px 
+
+          &.facebook
+            background-position: 0 -348px 
+
+          &.twitter
+            background-position: 0 -401px 
+
+          &.pinterest
+            background-position: 0 -453px 
+
+          &.google
+            background-position: 0 -506px 
+
+// groups
+.group
+
+  li 
+    display: table
+    +box-sizing(border-box)
+    width: 100%
+    padding: 0 14px 14px
+
+    &:first-child
+      margin-top: 14px 
+
+    img 
+      float: left
+      margin-bottom: 0
+
+    h4, p
+      width: 100%
+      display: table-cell
+      padding-left: $DEFAULT_MARGIN
+      vertical-align: middle
+      line-height: 1.2em
+
+  &.sep
+
+    li 
+      padding: 10px 14px
+      border-bottom: $SOLID_LINE_BEIGE
+
+      &:first-child, &:last-child
+        margin: 0
+
+
+// spans create "stacked" dotted line separators
+.stacker
+  
+  span
+    display: block
+    border-bottom: $DOTTED_LINE
+    margin-bottom: 1px
+
+    >*
+      margin: 10px 14px
+      display: inline-block
+
+    &.filter
+      padding: 0 14px
+
+      strong
+        margin-left: 0
+
+      .tab
+        padding: 10px 14px
+        margin: 0
+        display: inline-block
+        border-left: 4px solid #AAA794
+        background-color: #F4F4F4
+        cursor: pointer
+        color: #000
+        font-weight: bold
+        margin-bottom: 1px
+
+        &:hover
+          text-decoration: none
+
+        em
+          display: inline-block
+          background: url($SPRITE) no-repeat left -882px
+          width: 17px
+          height: 18px
+          margin: 0 0 -3px 7px
+
+    .filter-panel
+      display: none
+      +box-sizing(border-box)
+      width: 100%
+      padding: 7px 14px
+      border: 1px solid #CBCBCB
+      margin: -11px 0 -1px
+      font-size: $FONT_SM
+      font-weight: bold
+
+      li
+        border-bottom: $SOLID_LINE_BEIGE
+        padding: 4px 7px
+
+        &:last-child
+          border-bottom: none
+
+        a 
+          display: block
+
+    p 
+      font-size: $FONT_SM
+
+    button
+      margin-right: 0
+
+      &:last-child
+        float: right
+
+  .arrow
+    margin: 0
+
+  .expander
+    font-size: $FONT_X_SM
+
+
+.boot 
+
+  .wrap 
+    border-top: $DOTTED_LINE
+    border-bottom: $DOTTED_LINE
+
+  button.action
+    margin: 10px 14px
+    float: right
+
+.recipes + .boot
+  margin-top: -14px
+
+
+// utilities
+
+div.hr
+  height: 4px
+  background-color: #E0DDD0
+  margin: 14px 0
+
+  hr 
+    display: none  
+
+section div.hr 
+  height: 1px 
+  background-color: $GREY_TINT
+  margin: 7px 0 14px
+
+.hide-text // requires "block" level element
+  text-indent: 100%
+  white-space: nowrap
+  overflow: hidden 
+
+.hide
+  display: none
+
+.disable
+  pointer-events: none
+  cursor: default
+
+.clear
+  content: "."
+  display: block
+  height: 0
+  clear: both
+  visibility: hidden
+
+.warn
+  position: fixed
+  top: 0
+  right: 0
+  +box-sizing(border-box)
+  padding: $DEFAULT_PADDING
+  background-color: $LIME
+  color: #000
+  font-size: .85em
+  cursor: pointer
+  z-index: 2
+
+  p
+    font-weight: bold
+    margin-bottom: 0
+
+  ul
+    margin: 0 0 1em
+    display: none
+
+    &:first-child
+      border-bottom: 1px solid #333
+
+    li 
+      padding: 0 4px
+
+      &:first-child
+        font-weight: bold       
+
+      a
+        display: block
+
+      &:hover 
+        background-color: $LIME / 2
+
+        a
+          text-decoration: none
+          color: #FFF
+  
+      &.current
+        background-color: #FFF
+
+        a
+          color: $LINK_COLOR_DEFAULT
+
+// clear fix
+.cf:before,
+.cf:after
+  content: ""
+  display: table
+
+.cf:after
+  clear: both
+
+section pre 
+  display: none
+  position: absolute
+  left: 334px
+  top: 0
+  width: 800px
+  background: #EBE9DA
+  padding: 14px
+  font-size: $FONT_SM
+  line-height: 1.4em
+  z-index: 1000
+
+select
+  width: 91%
+  margin: 0 14px
+  position: relative
+  height: 33px
+  font-size: $FONT_SM 
+  font-weight: bold
+  +border-radius(4px)
+  +box-shadow(0px 1px 3px rgba(0, 0, 0, 0.1))
+  +linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5)
+  border: 1px solid #AAA
+  background: url($SPRITE) no-repeat 231px -844px
+  -webkit-appearance: none
+  color: $LINK_COLOR_DEFAULT
+
+.hd select
+  padding: 7px
+  margin-bottom: 7px
+
+
+// ratings
+.rating
+  display: block
+  background: url($SPRITE) no-repeat 0 -699px
+  height: 16px
+  @extend .hide-text
+
+  &.five
+    background-position: 0 -699px
+
+  &.four
+    background-position: 0 -719px
+
+  &.three
+    background-position: 0 -739px
+
+  &.two
+    background-position: 0 -759px
+
+  &.one
+    background-position: 0 -779px
+
+  &.zero
+    background-position: 0 -799px
+
+// footer specific 
+footer 
+  background-color: $FOOTER_COLOR
+  color: $TEXT_COLOR_TINT
+
+  .search-wrap
+    margin-top: 0
+
+  .bd
+    text-align: center
+
+  .list li
+    display: inline-block
+    border: 0
+    list-style-type: none
+    border-right: 1px solid #FFF
+    padding-right: 7px
+    margin-right: 4px
+    line-height: 1em
+
+  li:first-child
+    border-left: none
+
+  li:last-child
+    border-right: none
+
+  .bd ul
+    margin: .75em 0
+    font-size: $FONT_SM
+
+  .bd p 
+    font-size: $FONT_X_SM
+    margin-bottom: .5em
+
+  a
+    color: $LINK_COLOR_CONTRAST
+
+  nav 
+    background: none
+    margin-bottom: -14px 
+
+    ul
+      padding: 7px 0
+
+      li 
+        border-right: 1px solid #565656
+        border-left: 1px solid #000
+        margin-right: -2px
+
+        a
+          padding: 4px 0
+
+
+// CSS transition stuff
+
+.t-wrap
+  position: relative
+  z-index: 1 
+  overflow: hidden
+  margin: 14px
+  +box-sizing(border-box)
+
+  section
+    margin: 0    
+
+.t                  // general transition class
+  display: none
+  top: 0
+  left: 0
+  position: absolute  
+  z-index: 2
+  +backface-visibility(hidden)
+
+  &.current         // class to display transitioned element
+    display: block
+
+  &.fixed
+    margin: 0
+    width: 100%
+
+.in, .out 
+  -webkit-animation-timing-function: ease-in-out
+  -webkit-animation-duration: 300ms
+
+// fade in
+@-webkit-keyframes fade-in 
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+.fade
+  &.in
+    -webkit-animation-name: fade-in
+    z-index: 10
+
+.fade
+  &.out
+    z-index: 0
+
+.show
+  &.in
+    z-index: 10
+    -webkit-animation-name: fade-in
+    -webkit-animation-duration: 10ms
+
+.show
+  &.out
+    z-index: 0
+
+// slide in
+// out to left
+@-webkit-keyframes outToLeft
+  from
+    -webkit-transform: translateX(0)
+  to 
+    -webkit-transform: translateX(-100%)
+      
+.push 
+  &.out 
+    -webkit-animation-name: outToLeft
+
+// in from right
+@-webkit-keyframes inFromRight
+  from
+    -webkit-transform: translateX(100%)
+  to 
+    -webkit-transform: translateX(0)
+      
+.push 
+  &.in
+    -webkit-animation-name: inFromRight
+
+// in from left
+@-webkit-keyframes inFromLeft
+  from
+    -webkit-transform: translateX(-100%)
+  to
+    -webkit-transform: translateX(0)
+
+.push
+  &.in
+    &.reverse
+      -o-transform: translateX(0)
+      -webkit-animation-name: inFromLeft
+
+@-webkit-keyframes outToRight
+  from 
+    -webkit-transform: translateX(0)
+  to 
+    -webkit-transform: translateX(100%)
+
+.push
+  &.out
+    &.reverse
+      -o-transform: translateX(100%)
+      -webkit-animation-name: outToRight
+
+// media queries for landscape mode
+
+@media all and (orientation:landscape)
+
+  header
+    .bd 
+      padding: 14px 28px
+
+    nav 
+      ul
+        padding: 0 21px
+
+  .page
+    background-color: #D5CFBE
+
+  div[role="main"]
+    margin: 0 21px
+    padding-bottom: 7px
+    background-color: #ECE9DA
+
+  section.f
+    margin: 0
+
+  .guide dl dd
+    width: 74%
+
+  #sponsor
+    float: right
+    margin-left: 21px
+
+    cite 
+      display: block
+      margin-top: 0
+
+  .slide-show
+    h3, p 
+      padding: 0 14px
+
+    #wrapper div ul li 
+      display: inline-block
+      width: 410px
+      height: 100%
+
+  .article-tools
+    li 
+      margin: 0 5%
+
+  section.wide
+    position: relative
+    width: 104% 
+    left: -21px
+    margin-bottom: -7px
+
+    .selectable li a 
+      padding: 10px 35px 7px
+
+      em
+        right: 30px
+
+  button.vert
+    width: 97%
+
+  button.horz
+    width: 48%
+
+  .ordered.packages ol li div
+    width: auto
+
+  .hd.inline
+    select
+      width: 82%
+      background-position: right -843px
+
+  .recipes
+    select
+      width: 93%
+      background-position: right -843px
+
+  .grid
+    li 
+      margin-right: 7px
+      &:nth-child(3)
+        margin-right: 0

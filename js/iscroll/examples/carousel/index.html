@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>iScroll demo: Carousel</title>
+
+<script type="text/javascript" src="../../src/iscroll.js"></script>
+
+<script type="text/javascript">
+var myScroll;
+
+function loaded() {
+	myScroll = new iScroll('wrapper', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		onScrollEnd: function () {
+			document.querySelector('#indicator > li.active').className = '';
+			document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+		}
+	 });
+}
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+
+<style type="text/css" media="all">
+
+#wrapper {
+	width:150px;
+	height:160px;
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
+	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
+	overflow:hidden;
+}
+#scroller {
+    height: 100%;
+    float: left;
+    padding: 0;
+}
+
+#scroller ul {
+    list-style: none;
+    display: block;
+    float: left;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    white-space:nowrap; /* added */
+}
+#scroller li {
+    display: inline-block;
+    padding: 0 10px;
+    width: 120px;
+    height: 100%;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid white;
+    background-color: #FAFAFA;
+    font-size: 14px;
+}
+
+</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="scroller">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</div>
+<div id="nav">
+	<div id="prev" onclick="myScroll.scrollToPage('prev', 0);return false">&larr; prev</div>
+	<div id="next" onclick="myScroll.scrollToPage('next', 0);return false">next &rarr;</div>
+</div>
+</body>
+</html>
